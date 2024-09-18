@@ -4,7 +4,7 @@ class BookView:
         """
         Display the details of book.
         """
-        print(f"Title: {book.name}")
+        print(f"Title: {book.title}")
         print(f"Author: {book.author}")
         print(f"ISBN: {book.isbn}")
         print(f"Summary: {book.summary}")
