@@ -1,11 +1,12 @@
 class Book:
-    def __init__(self, title=None, author=None, isbn=None):
+    def __init__(self, title=None, author=None, isbn=None, summary=None):
         """
         Initializes a new book.
         """
         self.title = title
         self.author = author
         self.isbn = isbn
+        self.summary = summary
 
     def set_title(self, title):
         self.title = title
@@ -15,6 +16,9 @@ class Book:
 
     def set_isbn(self, isbn):
         self.isbn = isbn
+
+    def set_summary(self, summary):
+        self.summary = summary
 
     def to_dict(self):
         """
@@ -43,7 +47,7 @@ class Book:
         """
         return a string representation of the book.
         """
-        return f"Title: {self.title} - Author: {self.author} - ISBN: {self.isbn}"
+        return f"Title: {self.title}\nAuthor: {self.author}\nISBN: {self.isbn}\nSummary: {self.summary}"
 
 
 class DigitalBook(Book):
@@ -52,7 +56,7 @@ class DigitalBook(Book):
         self.type = type
 
     def __str__(self):
-        return f"{super().__str__()} Type: {self.type}"
+        return f"{super().__str__()}\nType: {self.type}"
 
 
 class PaperBook(Book):
@@ -61,14 +65,19 @@ class PaperBook(Book):
         self.type = type
 
     def __str__(self):
-        return f"{super().__str__()} Type: {self.type}"
+        return f"{super().__str__()}\nType: {self.type}"
 
 
 if __name__ == "__main__":
-    book = Book("Les 7 habitudes des gens qui", "Covey", "978-22902060582")
+    book = Book(
+        "Les 7 habitudes des gens qui",
+        "Covey",
+        "978-22902060582",
+        "Un jeune prince explore différentes planètes et découvre la complexité des relations humaines à travers "
+        "des rencontres inattendues.",
+    )
     print(book)
     book_d = DigitalBook()
     print(book_d)
     book_p = PaperBook()
     print(book_p)
-
