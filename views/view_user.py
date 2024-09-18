@@ -26,3 +26,10 @@ class UserView:
         name = input("Enter name: ")
         membership_no = input("Enter membership number: ")
         return name, membership_no
+
+    @staticmethod
+    def get_user_number():
+        """
+        Asks user for membership number.
+        """
+        return input("Enter membership number :")
