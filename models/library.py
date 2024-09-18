@@ -80,6 +80,7 @@ if __name__ == "__main__":
     library.add_book(book1)
     library.add_book(book2)
     library.borrow_book(book1)
+    library.return_book(book1)
     print(library)
 
 
