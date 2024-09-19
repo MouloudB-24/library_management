@@ -15,6 +15,10 @@ class MainController:
         self.book_view = BookView()
         self.library_view = LibraryView()
 
+    @staticmethod
+    def get_user_choice():
+        return input("Enter your choice 👉: ")
+
     def main_menu(self):
         while True:
             print("\n--- Main Menu ---")
@@ -23,7 +27,7 @@ class MainController:
             print("3. Statistics")
             print("4. Exit")
 
-            choice = input("Enter your choice 👉: ")
+            choice = self.get_user_choice()
 
             if choice == "1":
                 self.manage_users()
@@ -39,6 +43,38 @@ class MainController:
 
     # --- user management ---
     def manage_users(self):
+        while True:
+            print("\n--- Manage users ---")
+            print("1. Add user")
+            print("2. Delete user")
+            print("3. Update user")
+            print("5. List users")
+            print("6. Back to main menu")
+
+            choice = self.get_user_choice()
+            if choice == "1":
+                self.add_user()
+            elif choice == "2":
+                self.delete_user()
+            elif choice == "3":
+                self.update_user()
+            elif choice == "4":
+                self.get_list_users()
+            elif choice == "6":
+                return
+            else:
+                print("Invalid choice 🤔. Please try again!")
+
+    def add_user(self):
+        pass
+
+    def delete_user(self):
+        pass
+
+    def update_user(self):
+        pass
+
+    def get_list_users(self):
         pass
 
     # --- Book management ---
@@ -53,7 +89,7 @@ class MainController:
             print("6. List books")
             print("7. Back to main menu")
 
-            choice = input("Enter your choice 👉: ")
+            choice = self.get_user_choice()
             if choice == "1":
                 self.add_book()
             elif choice == "2":
