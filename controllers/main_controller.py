@@ -66,10 +66,23 @@ class MainController:
                 print("Invalid choice 🤔. Please try again!")
 
     def add_user(self):
-        pass
+        try:
+            name, membership_no = self.user_view.get_user_details()
+            # ... Ajouter des fonctions de validate de doonées !!
+
+            self.user_controller.add_user(name, membership_no)
+            print("The user is successfully added 👏")
+
+        except Exception as e:
+            print(f"Error adding user ‼️: {e}")
 
     def delete_user(self):
-        pass
+        try:
+            membership_no = self.user_view.get_user_membership_no()
+            self.user_controller.delete_user(membership_no)
+            print("The user is successfully deleted 👏")
+        except Exception as e:
+            print(f"Error suppression user ‼️: {e}")
 
     def update_user(self):
         pass
@@ -132,4 +145,6 @@ class MainController:
         pass
 
 
+if __name__ == "__main__":
+    pass
 
