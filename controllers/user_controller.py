@@ -12,6 +12,19 @@ class UserController:
         self.users.append(user)
         save_users(self.users)
 
+    def delete_user(self, membership_no):
+        user = self.find_user_by_membership_no(membership_no)
+        if user:
+            self.users.remove()
+        return
+
+    def find_user_by_membership_no(self, membership_no):
+        for user in self.users:
+            if user.membership_no == membership_no:
+                return user
+        return
+
+
     def list_users(self):
         return self.users
 
