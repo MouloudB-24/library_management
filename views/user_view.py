@@ -28,7 +28,7 @@ class UserView:
         return name, membership_no
 
     @staticmethod
-    def get_user_number():
+    def get_user_membership_no():
         """
         Asks user for membership number.
         """
