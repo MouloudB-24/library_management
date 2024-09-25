@@ -136,7 +136,13 @@ class MainController:
             print("Book not found 🤗")
 
     def delete_book(self):
-        pass
+        isbn = self.book_view.get_isbn_book()
+        book = self.book_controller.find_book_by_isbn(isbn)
+        if book:
+            self.book_controller.delete_book(book)
+            print("The book is successfully deleted 👏")
+        else:
+            print("Book not found 🤗")
 
     def add_books(self):
         pass
