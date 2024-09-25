@@ -127,14 +127,12 @@ class MainController:
         print("The book is successfully added 👏")
 
     def search_book(self):
-        isbn = self.book_view.get_book_isbn()
+        isbn = self.book_view.get_isbn_book()
         book = self.book_controller.find_book_by_isbn(isbn)
         if book:
             print(book)
         else:
             print("Book not found 🤗")
-
-
 
     def delete_book(self):
         pass
@@ -149,7 +147,11 @@ class MainController:
         pass
 
     def get_list_book(self):
-        pass
+        books = self.book_controller.list_books()
+        if books:
+            self.book_view.display_books(books)
+        else:
+            print("No books available 😲")
 
     # --- Statistics management ---
     def generate_statistics(self):
