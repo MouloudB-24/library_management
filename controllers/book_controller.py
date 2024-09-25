@@ -12,6 +12,10 @@ class BookController:
         self.books.append(book)
         save_books(self.books)
 
+    def delete_book(self, book):
+        self.books.remove(book)
+        save_books(self.books)
+
     def list_books(self):
         return self.books
 
