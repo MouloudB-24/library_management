@@ -120,7 +120,11 @@ class MainController:
             print("Invalid choice 🤔. Please try again!")
 
     def add_book(self):
-        pass
+        title, author, isbn, summary = self.book_view.get_book_details()
+        # Ajouter des fonction de validation ...
+
+        self.book_controller.add_book(title, author, isbn, summary)
+        print("The book is successfully added 👏")
 
     def delete_book(self):
         pass
