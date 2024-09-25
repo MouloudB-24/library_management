@@ -30,3 +30,10 @@ class BookView:
         isbn = input("Enter ISBN: ")
         summary = input("Enter summary: ")
         return title, author, isbn, summary
+
+    @staticmethod
+    def get_isbn_book():
+        """
+        Prompts the user for the book's ISBN.
+        """
+        return input("Enter book's ISBN: ")
