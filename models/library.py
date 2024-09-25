@@ -1,5 +1,5 @@
-from book import Book
-from user import User
+from models.book import Book
+from models.user import User
 
 
 class Library:
