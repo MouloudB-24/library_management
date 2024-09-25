@@ -117,7 +117,8 @@ class MainController:
                 self.get_list_book()
             elif choice == "7":
                 return
-            print("Invalid choice 🤔. Please try again!")
+            else:
+                print("Invalid choice 🤔. Please try again!")
 
     def add_book(self):
         title, author, isbn, summary = self.book_view.get_book_details()
