@@ -126,13 +126,20 @@ class MainController:
         self.book_controller.add_book(title, author, isbn, summary)
         print("The book is successfully added 👏")
 
+    def search_book(self):
+        isbn = self.book_view.get_book_isbn()
+        book = self.book_controller.find_book_by_isbn(isbn)
+        if book:
+            print(book)
+        else:
+            print("Book not found 🤗")
+
+
+
     def delete_book(self):
         pass
 
     def add_books(self):
-        pass
-
-    def search_book(self):
         pass
 
     def borrow_book(self):
