@@ -5,7 +5,7 @@ from models.user import User
 class Library:
     _instance = None
 
-    def __new__(cls, name=None, address=None):
+    def __new__(cls, name="Bibliothèque publique", address="7500 Paris, France"):
         if cls._instance is None:
             cls._instance = super(Library, cls).__new__(cls)
             cls._instance.name = name
@@ -15,6 +15,10 @@ class Library:
             cls._instance.borrow_books = []
             cls._instance.history_book = {}
         return cls._instance
+
+    def update_library(self, name, address):
+        self.name = name
+        self.address = address
 
     def add_book(self, book):
         if isinstance(book, Book):
