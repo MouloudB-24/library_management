@@ -89,32 +89,6 @@ class MainController:
         except Exception as e:
             print(f"Error creating library: {e}")
 
-    # --- user management ---
-    def manage_users(self):
-        while True:
-            print("\n--- Manage users ---")
-            print("1. Add user")
-            print("2. Add a book")
-            print("3. Delete user")
-            print("4. Delete user")
-            print("3. Update user")
-            print("5. List users")
-            print("6. Back to main menu")
-
-            choice = self.get_user_choice()
-            if choice == "1":
-                self.add_user()
-            elif choice == "2":
-                self.delete_user()
-            elif choice == "3":
-                self.update_user()
-            elif choice == "4":
-                self.get_list_users()
-            elif choice == "6":
-                return
-            else:
-                print("Invalid choice 🤔. Please try again!")
-
     def add_user(self):
         try:
             name, membership_no = self.user_view.get_user_details()
@@ -139,36 +113,6 @@ class MainController:
 
     def get_list_users(self):
         pass
-
-    # --- Book management ---
-    def manage_books(self):
-        while True:
-            print("\n--- Main Books ---")
-            print("1. Add a book")
-            print("2. Delete a book")
-            print("3. Search for book")
-            print("4. Borrow a book")
-            print("5. Return a book")
-            print("6. List books")
-            print("7. Back to main menu")
-
-            choice = self.get_user_choice()
-            if choice == "1":
-                self.add_book()
-            elif choice == "2":
-                self.delete_book()
-            elif choice == "3":
-                self.search_book()
-            elif choice == "4":
-                self.borrow_book()
-            elif choice == "5":
-                self.return_book()
-            elif choice == "6":
-                self.get_list_book()
-            elif choice == "7":
-                return
-            else:
-                print("Invalid choice 🤔. Please try again!")
 
     def add_book(self):
         title, author, isbn, summary = self.book_view.get_book_details()
