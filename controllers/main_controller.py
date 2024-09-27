@@ -22,31 +22,81 @@ class MainController:
     def main_menu(self):
         while True:
             print("\n--- Main Menu ---")
-            print("1. Manage users")
-            print("2. Manage books")
-            print("3. Statistics")
-            print("4. Exit")
+            print("1. Manage library")
+            print("2. Statistics")
+            print("3. Exit")
 
             choice = self.get_user_choice()
 
-            if choice == "1":
-                self.manage_users()
-            elif choice == "2":
-                self.manage_books()
+            if choice == "3":
+                print("Goodbye 👋")
+                return
+            elif choice == "1":
+                self.manage_library()
             elif choice == "3":
                 self.generate_statistics()
-            elif choice == "4":
-                print("Goodbye 👋")
+            else:
+                print("Invalid choice 🤔. Please try again!")
+
+    # --- Create library ---
+    def manage_library(self):
+        options = ["a. Create library", "b. Add user", "c. Add book", "d. Delete user", "e. Delete book",
+                   "f. Update user", "g. Update book", "h. Search user", "i. Search book", "j. Borrow book",
+                   "k. Return book", "l. List users", "m. List books", "n. Back to main menu"]
+        while True:
+            for option in options:
+                print(option)
+
+            choice = self.get_user_choice()
+
+            if choice.lower() == "a":
+                self.create_library()
+            elif choice.lower() == "b":
+                self.add_user()
+            elif choice.lower() == "c":
+                self.add_book()
+            elif choice.lower() == "d":
+                self.delete_user()
+            elif choice.lower() == "e":
+                self.delete_book()
+            elif choice.lower() == "f":
+                self.update_user()
+            elif choice.lower() == "g":
+                self.update_book()
+            elif choice.lower() == "h":
+                self.search_user()
+            elif choice.lower() == "i":
+                self.search_book()
+            elif choice.lower() == "j":
+                self.borrow_book()
+            elif choice.lower() == "k":
+                self.return_book()
+            elif choice.lower() == "l":
+                self.get_list_users()
+            elif choice.lower() == "m":
+                self.get_list_book()
+            elif choice.lower() == "n":
                 return
             else:
                 print("Invalid choice 🤔. Please try again!")
+
+    def create_library(self):
+        try:
+            name, address = self.library_view.get_library_details()
+            self.library_controller.create_library(name, address)
+            print("Library created successfully 👏")
+
+        except Exception as e:
+            print(f"Error creating library: {e}")
 
     # --- user management ---
     def manage_users(self):
         while True:
             print("\n--- Manage users ---")
             print("1. Add user")
-            print("2. Delete user")
+            print("2. Add a book")
+            print("3. Delete user")
+            print("4. Delete user")
             print("3. Update user")
             print("5. List users")
             print("6. Back to main menu")
@@ -143,9 +193,6 @@ class MainController:
             print("The book is successfully deleted 👏")
         else:
             print("Book not found 🤗")
-
-    def add_books(self):
-        pass
 
     def borrow_book(self):
         pass
