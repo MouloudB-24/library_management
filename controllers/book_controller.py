@@ -7,10 +7,7 @@ class BookController:
         self.books = load_books()
 
     def add_book(self, title, author, isbn, summary):
-        book = Book(title, author, isbn, summary)
-        # ... Générer le cas ou le book existe déjà
-        self.books.append(book)
-        save_books(self.books)
+        return Book(title, author, isbn, summary)
 
     def delete_book(self, book):
         self.books.remove(book)
