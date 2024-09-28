@@ -14,15 +14,17 @@ class LibraryController:
         :param address: The address of library.
         """
         library = Library(name, address)
-        self.library.append(library)
+        self.library = library
         save_library(self.library)
 
-    def retrieve_library(self):
+    def find_library_by_name(self, name):
         """
         Retrieve the library.
         return: Object representing the library.
         """
-        return self.library
+        if self.library.name == name:
+            return self.library
+        return None
 
     def add_user_to_library(self, user):
         """
@@ -30,11 +32,28 @@ class LibraryController:
         :param user: The user bas been to the library
         return: True if the user was successfully added, False if the library was not found.
         """
-        if self.library:
-            self.library.append(user)
-            save_library(self.library)
-            return True
-        return False
+        self.library.users.append(user.to_dict())
+        return save_library(self.library)
+
+    def delete_user_from_library(self, user):
+        self.library.users.remove(user)
+        return save_library(self.library)
+
+    def delete_book_from_library(self, book):
+        self.library.available_books.remove(book)
+        return save_library(self.library)
+
+    def find_user_by_membership_no(self, membership_no):
+        for user in self.library.users:
+            if user["membership_no"] == membership_no:
+                return user
+        return
+
+    def find_book_by_isbn(self, isbn):
+        for book in self.library.available_books:
+            if book["isbn"] == isbn:
+                return book
+        return
 
     def add_book_to_library(self, book):
         """
@@ -42,11 +61,8 @@ class LibraryController:
         :param book: The book bas been to the library
         return: True if the book was successfully added, False if the library was not found.
         """
-        if self.library:
-            self.library.append(book) # voir si ce n'est pas self.library.books.append(book)
-            save_library(self.library)
-            return True
-        return False
+        self.library.available_books.append(book.to_dict())
+        return save_library(self.library)
 
     def get_top_borrowed_books(self):
         pass
