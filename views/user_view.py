@@ -16,7 +16,7 @@ class UserView:
             print("No registered users 🤗")
         else:
             for user in users:
-                print(f"{user.name} (Membership number: {user.membership_no})")
+                print(f"{user['name']} (Membership number: {user['membership_no']})")
 
     @staticmethod
     def get_user_details():
@@ -33,3 +33,4 @@ class UserView:
         Asks user for membership number.
         """
         return input("Enter membership number :")
+
