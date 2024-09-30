@@ -4,6 +4,7 @@ from controllers.library_controller import LibraryController
 from views.user_view import UserView
 from views.book_view import BookView
 from views.library_view import LibraryView
+import typer
 
 
 class MainController:
@@ -21,22 +22,22 @@ class MainController:
 
     def main_menu(self):
         while True:
-            print("\n--- Main Menu ---")
-            print(" 1 -> Manage library")
-            print(" 2 -> Statistics")
-            print(" q -> Exit")
+            typer.echo("\n--- Main Menu ---")
+            typer.echo(" 1 -> Manage library")
+            typer.echo(" 2 -> Statistics")
+            typer.echo(" q -> Exit")
 
             choice = self.get_user_choice()
 
             if choice .lower() == "q":
-                print("Goodbye 👋")
+                typer.echo("Goodbye 👋")
                 return
             elif choice == "1":
                 self.manage_library()
             elif choice == "2":
                 self.generate_statistics()
             else:
-                print("Invalid choice 🤔. Please try again!")
+                typer.echo("Invalid choice 🤔. Please try again!")
 
     # --- Create library ---
     def manage_library(self):
@@ -50,7 +51,7 @@ class MainController:
 
         while True:
             for option in options:
-                print(option)
+                typer.echo(option)
 
             choice = self.get_user_choice()
 
@@ -73,7 +74,7 @@ class MainController:
             elif choice.lower() == "q":
                 return
             else:
-                print("Invalid choice 🤔. Please try again!")
+                typer.echo("Invalid choice 🤔. Please try again!")
 
     def create_library(self):
         try:
@@ -95,23 +96,24 @@ class MainController:
             user = self.user_controller.create_user(name, membership_no)
             # Ajouter le user
             self.library_controller.add_user_to_library(user)
-            print("The user is successfully added 👏")
+            typer.echo("The user is successfully added 👏")
 
         except Exception as e:
-            print(f"Error adding user: {e}")
+            typer.echo(f"Error adding user: {e}")
 
     def delete_user(self):
         try:
             membership_no = self.user_view.get_user_membership_no()
             user = self.library_controller.find_user_by_membership_no(membership_no)
             if user:
+                typer.confirm("Do you really to delete the user?", abort=True)
                 self.library_controller.delete_user_from_library(user)
-                print("The user is successfully deleted 👏")
+                typer.echo("The user is successfully deleted 👏")
             else:
-                print("The user not found!")
+                typer.echo("The user not found!")
 
         except Exception as e:
-            print(f"Error suppression user: {e}")
+            typer.echo(f"Error suppression user: {e}")
 
     def add_book(self):
         try:
@@ -124,6 +126,7 @@ class MainController:
                 book = self.book_controller.create_digital_book(title, author, isbn, summary, typer)
                 self.library_controller.add_digital_book_to_library(book)
             print("The book is successfully added 👏")
+
         except Exception as e:
             print(f"Error adding book: {e}")
 
@@ -131,19 +134,20 @@ class MainController:
         try:
             book, status = self._get_book_status()
             if book and status == "Available":
+                typer.confirm("Do you really to delete the book?", abort=True)
                 self.library_controller.delete_book_from_library(book)
-                print("The book is successfully deleted 👏")
+                typer.echo("The book is successfully deleted 👏")
             else:
-                print(f"Book status: {status}")
+                typer.echo(f"Book status: {status}")
 
         except Exception as e:
-            print(f"Error suppression book: {e}")
+            typer.echo(f"Error suppression book: {e}")
 
     def update_book(self):
         book, status = self._get_book_status()
         if book:
             while True:
-                print("what do you want to update : \n1- Title\n2- Author\n3- ISBN\n4- Summary")
+                typer.echo("what do you want to update : \n1- Title\n2- Author\n3- ISBN\n4- Summary")
                 choice = input("Enter your choice: ")
                 if choice.isdigit() and choice in ["1", "2", "3", "4"]:
                     break
@@ -159,16 +163,16 @@ class MainController:
             else:
                 summary = self.book_view.get_book_summary()
                 self.library_controller.update_book_summary(book, summary)
-            print("The book is successfully updated!")
+            typer.echo("The book is successfully updated!")
 
         else:
-            print(f"Book status: {status}")
+            typer.echo(f"Book status: {status}")
 
     def search_book(self):
         book, status = self._get_book_status()
         if book:
             self.book_view.display_book(book)
-        print(f"Book status: {status}")
+        typer.echo(f"Book status: {status}")
 
     def borrow_book(self):
         book, status = self._get_book_status()
@@ -176,20 +180,20 @@ class MainController:
         user = self.library_controller.find_user_by_membership_no(membership_no)
         if user:
             if status != "Available":
-                print(f"Book status: {status}")
+                typer.echo(f"Book status: {status}")
                 return
             self.library_controller.borrow_book(book, user)
-            print("Book successfully borrowed")
+            typer.echo("Book successfully borrowed")
         else:
-            print("The user not found!")
+            typer.echo("The user not found!")
 
     def return_book(self):
         book, status = self._get_book_status()
         if status != "Borrowed":
-            print(f"Book status: {status}")
+            typer.echo(f"Book status: {status}")
             return
         self.library_controller.return_book(book)
-        print("Book successfully borrowed")
+        typer.echo("Book successfully borrowed")
 
     def _get_book_status(self):
         isbn = self.book_view.get_book_isbn()
@@ -219,35 +223,35 @@ class MainController:
             elif choice.lower() == "q":
                 return
             else:
-                print("Invalid choice 🤔. Please try again!")
+                typer.echo("Invalid choice 🤔. Please try again!")
 
     def get_all_books(self):
         books = self.library_controller.get_all_books()
         if books:
             self.book_view.display_books(books)
         else:
-            print("No books available 😲")
+            typer.echo("No books available 😲")
 
     def get_all_users(self):
         users = self.library_controller.get_all_users()
         if users:
             self.user_view.display_users(users)
         else:
-            print("No users available 😲")
+            typer.echo("No users available 😲")
 
     def get_top_books(self):
         books = self.library_controller.get_history_books()
         sorted_books = sorted(books.items(), key=lambda item: item[1], reverse=True)
-        print("Rating of most borrowed books:")
+        typer.echo("Rating of most borrowed books:")
         for rank, (title, value) in enumerate(sorted_books, start=1):
-            print(f"{rank} - {title} ({value} borrowings)")
+            typer.echo(f"{rank} - {title} ({value} borrowings)")
 
     def get_top_users(self):
         users = self.library_controller.get_history_users()
         sorted_users = sorted(users.items(), key=lambda item: item[1], reverse=True)
-        print("Rating of most active users:")
+        typer.echo("Rating of most active users:")
         for rank, (name, value) in enumerate(sorted_users, start=1):
-            print(f"{rank} - {name} - ({value} borrowings)")
+            typer.echo(f"{rank} - {name} - ({value} borrowings)")
 
 
 if __name__ == "__main__":
