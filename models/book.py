@@ -24,11 +24,10 @@ class Book:
         """
         Converts the book information to dictionary.
         """
-        return {
-            "title": self.title,
-            "author": self.author,
-            "isbn": self.isbn,
-        }
+        return {"title": self.title,
+                "author": self.author,
+                "isbn": self.isbn,
+                "summary": self.summary}
 
     @classmethod
     def from_dict(cls, data):
@@ -37,11 +36,10 @@ class Book:
 
         :param data: Dictionary containing the book data.
         """
-        return cls(
-            title=data["title"],
-            author=data["author"],
-            isbn=data["isbn"],
-        )
+        return cls(title=data["title"],
+                   author=data["author"],
+                   isbn=data["isbn"],
+                   summary=data["summary"])
 
     def __str__(self):
         """
@@ -50,34 +48,5 @@ class Book:
         return f"Title: {self.title}\nAuthor: {self.author}\nISBN: {self.isbn}\nSummary: {self.summary}"
 
 
-class DigitalBook(Book):
-    def __init__(self, title=None, author=None, isbn=None, type="Digital"):
-        super().__init__(title, author, isbn)
-        self.type = type
-
-    def __str__(self):
-        return f"{super().__str__()}\nType: {self.type}"
-
-
-class PaperBook(Book):
-    def __init__(self, title=None, author=None, isbn=None, type="Paper"):
-        super().__init__(title, author, isbn)
-        self.type = type
-
-    def __str__(self):
-        return f"{super().__str__()}\nType: {self.type}"
-
-
 if __name__ == "__main__":
-    book = Book(
-        "Les 7 habitudes des gens qui",
-        "Covey",
-        "978-22902060582",
-        "Un jeune prince explore différentes planètes et découvre la complexité des relations humaines à travers "
-        "des rencontres inattendues.",
-    )
-    print(book)
-    book_d = DigitalBook()
-    print(book_d)
-    book_p = PaperBook()
-    print(book_p)
+    pass

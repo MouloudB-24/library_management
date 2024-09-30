@@ -38,5 +38,4 @@ class User:
 
 
 if __name__ == "__main__":
-    user = User("Aylan", "123")
-    print(user)
+    pass
