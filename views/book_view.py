@@ -1,13 +1,16 @@
+import typer
+
+
 class BookView:
     @staticmethod
     def display_book(book):
         """
         Display the details of book.
         """
-        print(f"Title: {book.get('title')}")
-        print(f"Author: {book.get('author')}")
-        print(f"ISBN: {book.get('isbn')}")
-        print(f"Summary: {book.get('summary')}")
+        typer.secho(f"Title: {book.get('title')}", bold=True)
+        typer.secho(f"Author: {book.get('author')}", bold=True)
+        typer.secho(f"ISBN: {book.get('isbn')}", bold=True)
+        typer.secho(f"Summary: {book.get('summary')}", bold=True)
 
     @staticmethod
     def display_books(books):
@@ -15,47 +18,47 @@ class BookView:
         Display a list of books.
         """
         if not books:
-            print("No books available 🤗")
+            typer.secho("No books available 🤗", bold=True)
         else:
             for book in books:
-                print(f"{book['title']} - {book['author']} (ISBN: {book['isbn']})")
+                typer.secho(f"{book['title']} - {book['author']} (ISBN: {book['isbn']})", bold=True)
 
     @staticmethod
     def get_book_details():
         """
         Prompts the user for book details.
         """
-        title = input("Enter title: ")
-        author = input("Enter author: ")
-        isbn = input("Enter ISBN: ")
-        summary = input("Enter summary: ")
-        typer = input("Enter typer (paper/digital): ")
-        return title, author, isbn, summary, typer
+        title = typer.prompt("Enter title: ")
+        author = typer.prompt("Enter author: ")
+        isbn = typer.prompt("Enter ISBN: ")
+        summary = typer.prompt("Enter summary: ")
+        typer_ = typer.prompt("Enter typer (paper/digital): ")
+        return title, author, isbn, summary, typer_
 
     @staticmethod
     def get_book_isbn():
         """
         Prompts the user for the book's ISBN.
         """
-        return input("Enter book's ISBN: ")
+        return typer.prompt("Enter book's ISBN: ")
 
     @staticmethod
     def get_book_title():
         """
         Prompts the user for the book's title.
         """
-        return input("Enter book's title: ")
+        return typer.prompt("Enter book's title: ")
 
     @staticmethod
     def get_book_author():
         """
         Prompts the user for the book's author.
         """
-        return input("Enter book's author: ")
+        return typer.prompt("Enter book's author: ")
 
     @staticmethod
     def get_book_summary():
         """
         Prompts the user for the book's summary.
         """
-        return input("Enter book's summary: ")
+        return typer.prompt("Enter book's summary: ")

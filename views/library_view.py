@@ -1,3 +1,6 @@
+import typer
+
+
 class LibraryView:
 
     @staticmethod
@@ -5,6 +8,6 @@ class LibraryView:
         """
         Prompts the user for library details.
         """
-        name = input("Enter library name: ")
-        address = input("Enter library address: ")
+        name = typer.prompt("Enter library name: ")
+        address = typer.prompt("Enter library address: ")
         return name, address
