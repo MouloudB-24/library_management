@@ -6,18 +6,11 @@ controller = MainController()
 
 
 @app.command()
-def run():
-    """
-    Command to start library management.
-    """
-    controller.main_menu()
-
-
-@app.command()
 def add_user():
     """
     Command to add a user.
     """
+    controller.initialize_library()
     controller.add_user()
 
 
@@ -26,6 +19,7 @@ def delete_user():
     """
     Command to delete a user.
     """
+    controller.initialize_library()
     controller.delete_user()
 
 
@@ -34,6 +28,7 @@ def add_book():
     """
     Command to add a book.
     """
+    controller.initialize_library()
     controller.add_book()
 
 
@@ -42,6 +37,7 @@ def delete_book():
     """
     Command to delete a book.
     """
+    controller.initialize_library()
     controller.delete_book()
 
 
@@ -50,6 +46,7 @@ def update_book():
     """
     Command to update a book.
     """
+    controller.initialize_library()
     controller.update_book()
 
 
@@ -58,6 +55,7 @@ def search_book():
     """
     Command to search a book.
     """
+    controller.initialize_library()
     controller.search_book()
 
 
@@ -66,6 +64,7 @@ def borrow_book():
     """
     Command to borrow a book.
     """
+    controller.initialize_library()
     controller.borrow_book()
 
 
@@ -74,6 +73,7 @@ def return_book():
     """
     Command to return a book.
     """
+    controller.initialize_library()
     controller.return_book()
 
 
@@ -82,14 +82,16 @@ def all_books():
     """
     Command to get all books.
     """
+    controller.initialize_library()
     controller.get_all_books()
 
 
 @app.command()
-def all_books():
+def all_users():
     """
     Command to get all users.
     """
+    controller.initialize_library()
     controller.get_all_users()
 
 
@@ -98,6 +100,7 @@ def top_books():
     """
     Command to get top books.
     """
+    controller.initialize_library()
     controller.get_top_books()
 
 
@@ -106,6 +109,7 @@ def top_users():
     """
     Command to get top users.
     """
+    controller.initialize_library()
     controller.get_top_users()
 
 
