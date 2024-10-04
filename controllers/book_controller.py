@@ -8,9 +8,15 @@ class BookController:
         self.digital_book_model = DigitalBook
 
     def create_paper_book(self, title, author, isbn, summary, typer):
+        """
+        Create a paper book.
+        """
         return self.paper_book_model(title, author, isbn, summary, typer)
 
     def create_digital_book(self, title, author, isbn, summary, typer):
+        """
+        Create a digital book.
+        """
         return self.digital_book_model(title, author, isbn, summary, typer)
 
     def is_valid_isbn(self, isbn):
