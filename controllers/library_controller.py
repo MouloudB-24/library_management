@@ -78,7 +78,7 @@ class LibraryController:
         :param book: The book bas been to the library
         return: True if the book was successfully added, False if the library was not found.
         """
-        self.library.create_digital_book(book)
+        self.library.add_digital_book(book)
         return save_library(self.library)
 
     def borrow_book(self, book, user):
