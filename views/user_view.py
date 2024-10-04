@@ -7,8 +7,8 @@ class UserView:
         """
         Display the details of user.
         """
-        typer.secho(f"Name: {user.name}", blod=True)
-        typer.secho(f"Membership number: {user.membership_no}", blod=True)
+        typer.secho(f"Name: {user.name}", bold=True)
+        typer.secho(f"Membership no: {user.membership_no}", bold=True)
 
     @staticmethod
     def display_users(users):
@@ -16,10 +16,10 @@ class UserView:
         Display a list of users.
         """
         if not users:
-            typer.secho("No registered users 🤗", fg=typer.colors.RED, blod=True)
+            typer.secho("No registered users 🤗", fg=typer.colors.RED, bold=True)
         else:
             for user in users:
-                typer.secho(f"{user['name']} (Membership number: {user['membership_no']})", blod=True)
+                typer.secho(f"{user['name']}  (Membership no: {user['membership_no']})", bold=True)
 
     @staticmethod
     def get_user_details():
@@ -35,5 +35,5 @@ class UserView:
         """
         Asks user for membership number.
         """
-        return typer.prompt("Enter membership number :")
+        return typer.prompt("Enter user's membership number :")
 

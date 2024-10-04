@@ -11,3 +11,11 @@ class LibraryView:
         name = typer.prompt("Enter library name: ")
         address = typer.prompt("Enter library address: ")
         return name, address
+
+    @staticmethod
+    def display_libray(library):
+        """
+        Display the details of libray.
+        """
+        typer.secho(f"{library.name} - {library.address}", fg=typer.colors.GREEN, bg=typer.colors.BLACK, bold=True)
+

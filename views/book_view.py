@@ -40,14 +40,14 @@ class BookView:
         """
         Prompts the user for the book's ISBN.
         """
-        return typer.prompt("Enter book's ISBN: ")
+        return typer.prompt("Enter book's ISBN")
 
     @staticmethod
     def get_book_title():
         """
         Prompts the user for the book's title.
         """
-        return typer.prompt("Enter book's title: ")
+        return typer.prompt("Enter book's title")
 
     @staticmethod
     def get_book_author():
@@ -61,4 +61,12 @@ class BookView:
         """
         Prompts the user for the book's summary.
         """
-        return typer.prompt("Enter book's summary: ")
+        return typer.prompt("Enter book's summary")
+
+    @staticmethod
+    def get_book_typer_():
+        """
+        Prompts the user for the book's typer.
+        """
+        return typer.prompt("Enter book's typer (paper or digital): ")
+
