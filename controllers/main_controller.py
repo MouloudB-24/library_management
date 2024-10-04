@@ -1,10 +1,11 @@
+import typer
+
 from controllers.user_controller import UserController
 from controllers.book_controller import BookController
 from controllers.library_controller import LibraryController
 from views.user_view import UserView
 from views.book_view import BookView
 from views.library_view import LibraryView
-import typer
 
 
 class MainController:
@@ -17,6 +18,9 @@ class MainController:
         self.library_view = LibraryView()
 
     def initialize_library(self):
+        """
+        Create a library if it doesn't exist.
+        """
         library = self.library_controller.library
         if not library:
             typer.echo("You must first create a library please🤗")
@@ -25,15 +29,21 @@ class MainController:
             self.library_view.display_libray(library)
 
     def create_library(self):
+        """
+        Create a new library
+        """
         if self.library_controller.library:
             typer.secho("A library exists")
             self.library_view.display_libray(self.library_controller.library)
             return
         name, address = self.library_view.get_library_details()
         self.library_controller.create_library(name, address)
-        typer.secho("Library successfully updated  👏", fg=typer.colors.GREEN, bold=True)
+        typer.secho("Library successfully create  👏", fg=typer.colors.GREEN, bold=True)
 
     def add_user(self):
+        """
+        Add a user to the library.
+        """
         name, membership_no = self.user_view.get_user_details()
         if self._is_exist_membership_no(membership_no):
             return
@@ -42,6 +52,9 @@ class MainController:
         typer.secho("The user is successfully added 👏", fg=typer.colors.GREEN, bold=True)
 
     def delete_user(self):
+        """
+        Delete a user from th library.
+        """
         membership_no = self.user_view.get_user_membership_no()
         user = self.library_controller.find_user_by_membership_no(membership_no)
         if user:
@@ -52,6 +65,9 @@ class MainController:
             typer.secho("The user not found!", fg=typer.colors.RED, bold=True)
 
     def add_book(self):
+        """
+        Add a book to the library.
+        """
         title, author, isbn, summary, typer_ = self.book_view.get_book_details()
         self._is_valid_isbn(isbn)
         book, status = self.library_controller.find_book_by_isbn(isbn)
@@ -68,6 +84,9 @@ class MainController:
         typer.secho("The book is successfully added 👏", fg=typer.colors.GREEN, bold=True)
 
     def delete_book(self):
+        """
+        Delete a book from the library.
+        """
         book, status = self._get_book_status()
         if book and status == "Available":
             typer.confirm("Do you really to delete the book?", abort=True)
@@ -77,6 +96,9 @@ class MainController:
             typer.secho(f"Book status: {status}", fg=typer.colors.RED, bold=True)
 
     def update_book(self):
+        """
+        Update book information.
+        """
         book, status = self._get_book_status()
         if book:
             choice = self.ask_user()
@@ -99,6 +121,9 @@ class MainController:
             typer.secho(f"Book status: {status}", fg=typer.colors.RED, bold=True)
 
     def search_book(self):
+        """
+        Search a book in the library.
+        """
         book, status = self._get_book_status()
         if book:
             self.book_view.display_book(book)
@@ -107,6 +132,9 @@ class MainController:
             typer.secho(f"Book status: {status}", fg=typer.colors.RED, bold=True)
 
     def borrow_book(self):
+        """
+        Borrow a book from a library.
+        """
         book, status = self._get_book_status()
         membership_no = self.user_view.get_user_membership_no()
         user = self.library_controller.find_user_by_membership_no(membership_no)
@@ -120,6 +148,9 @@ class MainController:
             typer.secho("The user not found!", fg=typer.colors.RED, bold=True)
 
     def return_book(self):
+        """
+        Return a book to the library.
+        """
         book, status = self._get_book_status()
         if status != "Borrowed":
             typer.secho(f"Book status: {status}", fg=typer.colors.RED, bold=True)
@@ -128,6 +159,9 @@ class MainController:
         typer.secho("Book successfully borrowed", fg=typer.colors.GREEN, bold=True)
 
     def get_all_books(self):
+        """
+        Obtain a list of all the books in the library.
+        """
         books = self.library_controller.get_all_books()
         if books:
             self.book_view.display_books(books)
@@ -135,6 +169,9 @@ class MainController:
             typer.secho("No books available 😲", fg=typer.colors.RED, bold=True)
 
     def get_all_users(self):
+        """
+        Obtain a list of all the users in the library.
+        """
         users = self.library_controller.get_all_users()
         if users:
             self.user_view.display_users(users)
@@ -142,6 +179,9 @@ class MainController:
             typer.secho("No users available 😲", fg=typer.colors.RED, bold=True)
 
     def get_top_books(self):
+        """
+        Get the rankings of books based on their borrowings.
+        """
         books = self.library_controller.get_history_books()
         sorted_books = sorted(books.items(), key=lambda item: item[1], reverse=True)
         typer.secho("Rating of most borrowed books:", bold=True)
@@ -149,6 +189,9 @@ class MainController:
             typer.secho(f"{rank} - {title} ({value} borrowings)", bold=True)
 
     def get_top_users(self):
+        """
+        Get the rankings of users based on their borrowings.
+        """
         users = self.library_controller.get_history_users()
         sorted_users = sorted(users.items(), key=lambda item: item[1], reverse=True)
         typer.secho("Rating of most active users:", bold=True)
