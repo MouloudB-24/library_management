@@ -2,33 +2,55 @@
 
 # Objectif
 Cette application permet de gérer efficacement des livres papier ou digital ainsi que les utilisateurs d'une 
-bibliothèque. Elle facilite l'ajout, l'emprunt et le retour des livres, tout en offrant un suivi des statistiques
-historique de livres et utilisateurs.
-
+bibliothèque. Elle facilite l'ajout, l'emprunt et le retour des livres, tout en offrant un suivi des statistiques, 
+et l'historique des livres et utilisateurs.
 
 # Fonctionnalités et mode d'exploitation 
 # 1- Gestion de la bibliothèque
-**Creation de la bibliothèque :** créer le bibliothèque, via la commande : `python3 main.py create-library`
+**Création de la bibliothèque :** créer la bibliothèque, via la commande : `python3 main.py create-library`
 
 # 2- Gestion des livres
-**Ajout un livre :** ajouter un livre (papier ou digital) à la bibliothèque, via la commande : `python3 main.py add-book`
-**Spprimer un livre :** supprimer un livre à la bibliothèque, via la commande : `python3 main.py delete-book`
-**Emprunter un livre :** emprunter un livre à la bibliothèque, via la commande : `python3 main.py borrow-book`
-**Retourner un livre :** retourner un livre à la bibliothèque, via la commande : `python3 main.py return-book`
-**Chercher un livre :** chercher un livre à la bibliothèque avec son ISBN, via la commande : `python3 main.py search-book`
-**Mis à jour un livre :** mettre à jour un livre à la bibliothèque, via la commande : `python3 main.py update-book`
-**Consulter des livres :** consulter tous les livres disponbles à la bibliothèque, via la commande : `python3 main.py all-books`
-**Consulter le classement des livres :** consulter les livres les mieux empruntés à la bibliothèque, via la commande : `python3 main.py top-books`
+**Ajout un livre :** ajouter un livre (papier ou digital) à la bibliothèque, 
+en exécutant la commande : `python3 main.py add-book`
+
+**Spprimer un livre :** supprimer un livre à la bibliothèque,
+en exécutant la commande: `python3 main.py delete-book`
+
+**Emprunter un livre :** emprunter un livre à la bibliothèque,
+en exécutant la commande : `python3 main.py borrow-book`
+
+**Retourner un livre :** retourner un livre à la bibliothèque,
+en exécutant la commande : `python3 main.py return-book`
+
+**Chercher un livre :** chercher un livre à la bibliothèque avec son ISBN, 
+en exécutant la commande : `python3 main.py search-book`
+
+**Mis à jour un livre :** mettre à jour un livre à la bibliothèque,
+en exécutant la commande : `python3 main.py update-book`
+
+**Consulter des livres :** consulter tous les livres disponbles à la bibliothèque,
+en exécutant la commande : `python3 main.py all-books`
+
+**Consulter le classement des livres :** consulter les livres les mieux empruntés à la bibliothèque,
+en exécutant la commande : `python3 main.py top-books`
 
 # 3- Gestion des utilisateurs
-**Ajout un utilisateur :** inscrire un utilisateur à la bibliothèque, via la commande : `python3 main.py add-user`
-**Supprimer un utilisateur :** supprimer un utilisateur de la bibliothèque, via la commande : `python3 main.py delete-user`
-**Consulter des utilisateurs :** consulter tous les utilisateurs inscrit à la bibliothèque, via la commande : `python3 main.py all-users`
-**Consulter le classement des utilisateurs :** consulter les utilisateurs qui empruntent plus de livres à la bibliothèque, via la commande : `python3 main.py top-users`
+**Ajout un utilisateur :** inscrire un utilisateur à la bibliothèque,
+en exécutant la commande : `python3 main.py add-user`
+
+**Supprimer un utilisateur :** supprimer un utilisateur de la bibliothèque,
+en exécutant la commande : `python3 main.py delete-user`
+
+**Consulter des utilisateurs :** consulter tous les utilisateurs inscrit à la bibliothèque,
+en exécutant la commande : `python3 main.py all-users`
+
+**Consulter le classement des utilisateurs :** consulter les utilisateurs qui empruntent plus de livres à la bibliothèque,
+en exécutant la commande: `python3 main.py top-users`
 
 # Remarques : 
 Avant d'utiliser les autres fonctionnalités, il est fortement recommandé de commencer par créer la bibliothèque en exécutant la commande :
 `python3 main.py create-library`
+
 Pour obtenir une liste complète des commandes disponibles et leur description, vous pouvez consulter l'aide en exécutant :
 `python3 main.py --help`
 
