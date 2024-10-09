@@ -13,7 +13,7 @@ et l'historique des livres et utilisateurs.
 **Ajout un livre :** ajouter un livre (papier ou digital) à la bibliothèque, 
 en exécutant la commande : `python3 main.py add-book`
 
-**Spprimer un livre :** supprimer un livre à la bibliothèque,
+**Spprimer un livre :** supprimer un livre de la bibliothèque,
 en exécutant la commande: `python3 main.py delete-book`
 
 **Emprunter un livre :** emprunter un livre à la bibliothèque,
@@ -28,7 +28,7 @@ en exécutant la commande : `python3 main.py search-book`
 **Mis à jour un livre :** mettre à jour un livre à la bibliothèque,
 en exécutant la commande : `python3 main.py update-book`
 
-**Consulter des livres :** consulter tous les livres disponbles à la bibliothèque,
+**Consulter des livres :** consulter tous les livres disponibles à la bibliothèque,
 en exécutant la commande : `python3 main.py all-books`
 
 **Consulter le classement des livres :** consulter les livres les mieux empruntés à la bibliothèque,
@@ -68,26 +68,5 @@ Pour obtenir une liste complète des commandes disponibles et leur description, 
 5. Installez les dépendances avec la commande : `pip install -r requirements.txt`
     
 5. Lancez la commande d'aide : `python3 main.py --help`
-
-Usage: main.py [OPTIONS] COMMAND [ARGS]...                                                                                              
-╭─ Options ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ --install-completion          Install completion for the current shell.                                                              │
-│ --show-completion             Show completion for the current shell, to copy it or customize the installation.                       │
-│ --help  
-
-╭─ Commands ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│ add-book         Command to add a book.                                                                                              │
-│ add-user         Command to add a user.                                                                                              │
-│ all-books        Command to get all books.                                                                                           │
-│ all-users        Command to get all users.                                                                                           │
-│ borrow-book      Command to borrow a book.                                                                                           │
-│ create-library   Command to crete a library.                                                                                         │
-│ delete-book      Command to delete a book.                                                                                           │
-│ delete-user      Command to delete a user.                                                                                           │
-│ return-book      Command to return a book.                                                                                           │
-│ search-book      Command to search a book.                                                                                           │
-│ top-books        Command to get top books.                                                                                           │
-│ top-users        Command to get top users.                                                                                           │
-│ update-book      Command to update a book.  
 
 **Nota :** Assurez-vous d'avoir un environnement Python configuré.
