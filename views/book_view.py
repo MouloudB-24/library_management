@@ -54,7 +54,7 @@ class BookView:
         """
         Prompts the user for the book's author.
         """
-        return typer.prompt("Enter book's author: ")
+        return typer.prompt("Enter book's author")
 
     @staticmethod
     def get_book_summary():

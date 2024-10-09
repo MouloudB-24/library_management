@@ -27,7 +27,7 @@ class UserView:
         prompts the user to provide information.
         """
         name = typer.prompt("Enter name: ")
-        membership_no = typer.prompt("Enter membership number: ")
+        membership_no = typer.prompt("Enter membership number")
         return name, membership_no
 
     @staticmethod
@@ -35,5 +35,5 @@ class UserView:
         """
         Asks user for membership number.
         """
-        return typer.prompt("Enter user's membership number :")
+        return typer.prompt("Enter user's membership number")
 
