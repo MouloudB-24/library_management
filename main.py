@@ -6,6 +6,14 @@ controller = MainController()
 
 
 @app.command()
+def create_library():
+    """
+    Command to crete a library.
+    """
+    controller.create_library()
+
+
+@app.command()
 def add_user():
     """
     Command to add a user.
