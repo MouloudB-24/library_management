@@ -7,9 +7,11 @@ et l'historique des livres et utilisateurs.
 
 # Fonctionnalités et mode d'exploitation 
 **1- Gestion de la bibliothèque**
+
 **Création de la bibliothèque :** créer la bibliothèque, via la commande : `python3 main.py create-library`
 
 **2- Gestion des livres**
+
 **Ajout un livre :** ajouter un livre (papier ou digital) à la bibliothèque, 
 en exécutant la commande : `python3 main.py add-book`
 
@@ -35,6 +37,7 @@ en exécutant la commande : `python3 main.py all-books`
 en exécutant la commande : `python3 main.py top-books`
 
 **3- Gestion des utilisateurs**
+
 **Ajout un utilisateur :** inscrire un utilisateur à la bibliothèque,
 en exécutant la commande : `python3 main.py add-user`
 
